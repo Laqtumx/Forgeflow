@@ -96,7 +96,7 @@ class Config:
     llm_provider: str = "gemini"  # gemini | anthropic | mock
     gemini_api_key: str | None = None
     anthropic_api_key: str | None = None
-    gemini_model: str = "gemini-2.5-flash"
+    gemini_model: str = "gemini-3.5-flash"
     anthropic_model: str = "claude-sonnet-4-5-20250929"
     llm_timeout_s: int = 120
     llm_max_retries: int = 2
@@ -156,7 +156,7 @@ class Config:
             gemini_api_key=_env(merged, "GEMINI_API_KEY")
             or _env(merged, "GOOGLE_API_KEY"),
             anthropic_api_key=_env(merged, "ANTHROPIC_API_KEY"),
-            gemini_model=_env(merged, "FORGEFLOW_GEMINI_MODEL") or "gemini-2.5-flash",
+            gemini_model=_env(merged, "FORGEFLOW_GEMINI_MODEL") or "gemini-3.5-flash",
             anthropic_model=_env(merged, "FORGEFLOW_ANTHROPIC_MODEL")
             or "claude-sonnet-4-5-20250929",
             llm_timeout_s=_int(merged, "FORGEFLOW_LLM_TIMEOUT_S", 120),
