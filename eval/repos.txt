@@ -1,0 +1,21 @@
+# Repositories for the evaluation. One "owner/name" per line; # starts a comment.
+#
+# Chosen to be small, actively maintained, Python, and to have a healthy mix of
+# bug reports and feature requests. The point is to see the heuristics behave on
+# repositories nobody wrote for this tool, including the ones where they pick a
+# bad candidate.
+#
+# Keep the list modest: the rank evaluation costs about 25-30 GitHub API calls
+# per repository (one per candidate, for linked-PR detection), so a
+# 20-repository run fits comfortably inside an authenticated hourly quota.
+
+pallets/click
+psf/requests
+pallets/flask
+encode/httpx
+tiangolo/typer
+pypa/pip
+python-poetry/poetry
+pytest-dev/pytest
+tox-dev/tox
+psf/black
