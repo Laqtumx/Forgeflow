@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forgeflow"
+version = "0.1.0"
+description = "Turn a public GitHub repository's open issues into reviewed, tested draft pull requests."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "requests>=2.31",
+    "pydantic>=2.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+forgeflow = "forgeflow.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["forgeflow*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: needs docker and/or network access",
+    "slow: takes more than a few seconds",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "C4", "SIM", "PIE", "RET", "RUF"]
+# Deliberate patterns, each with a reason:
+#   PLW1510  - subprocess.run in this codebase always inspects returncode itself
+#              (see gitops.run_git), so passing check=True would change behaviour.
+#   B017     - some tests assert that a whole *class* of misuse raises, because
+#              the specific exception is an implementation detail.
+#   PYI034   - __enter__ is typed to return the concrete class on purpose.
+ignore = ["PLW1510", "B017", "PYI034"]

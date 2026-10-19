@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# ForgeFlow runtime state
+.forgeflow/
+*.sqlite3
+*.sqlite3-journal
+.env
+
+# Test scratch space
+.pytest_cache/
+.agent_tmp/
+
+# Evaluation output (regenerate with `python -m eval.run`)
+eval/results.jsonl
+
+# Coverage
+.coverage
+htmlcov/
